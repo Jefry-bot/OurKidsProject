@@ -1,5 +1,8 @@
-backend/env
+/**/src/**/__pycache__/**
+backend/src/exceptions/__pycache__/
+backend/env/**
+frontend/env/**
 
-frontend/env
-
-*__pycache__
+**/__pycache__/
+*.pyc
+*.pyo
