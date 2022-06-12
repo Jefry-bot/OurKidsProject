@@ -1,4 +1,3 @@
-from flask import make_response
 from exceptions.NotFoundException import NotFoundException
 from utils.ExceptionBuilder import ExceptionBuilder
 from utils.ResponseBuilder import ResponseBuilder

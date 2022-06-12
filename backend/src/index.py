@@ -12,6 +12,7 @@ if __name__ == '__main__':
     for k in CONTROLLERS.keys():
         eval("app.register_blueprint(CONTROLLERS.get(k)." + str(k) + "_routes, url_prefix='/api')")
 
+
     for k, v in INTERCEPTORS.items():
         eval("app.register_error_handler(" + str(v) + ", f = interceptor." + str(k) + ")")
 
