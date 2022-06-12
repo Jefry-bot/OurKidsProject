@@ -1,8 +1,0 @@
-/**/src/**/__pycache__/**
-backend/src/exceptions/__pycache__/
-backend/env/**
-frontend/env/**
-
-**/__pycache__/
-*.pyc
-*.pyo

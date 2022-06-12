@@ -16,4 +16,4 @@ if __name__ == '__main__':
     for k, v in INTERCEPTORS.items():
         eval("app.register_error_handler(" + str(v) + ", f = interceptor." + str(k) + ")")
 
-    app.run(debug=True, port=4002)
+    app.run(debug=True, port=4000)
