@@ -9,7 +9,7 @@ class ResponseBuilder:
     def success(object: object) -> Response:
         if object.__class__.__name__ != 'list':
             object = object.__dict__
-
+        
         response = Response(
             data = object,
             message = "Proccess to success in server",

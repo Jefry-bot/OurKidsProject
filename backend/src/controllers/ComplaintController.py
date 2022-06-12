@@ -1,6 +1,6 @@
 import json
 import string
-from flask import Blueprint, request
+from flask import Blueprint, jsonify, request
 from entities.complaint import Complaint
 
 from services.ComplaintService import ComplaintService
@@ -29,3 +29,7 @@ class ComplaintController:
     @complaint_routes.post(__url)
     def save():
         return ResponseBuilder.voidSuccess(service.save, request)
+
+    @complaint_routes.get(__url + "/proof")
+    def proof():
+        return ResponseBuilder.success("Hello")
