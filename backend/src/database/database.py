@@ -6,7 +6,7 @@ class DataBase:
             host = 'localhost', 
             user = 'root',
             password = '',
-            db = 'springboot',
+            db = 'OURKIDS',
             port= 3306
         )
 
