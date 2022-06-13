@@ -1,7 +1,12 @@
 from PySide6.QtWidgets import QWidget
-from screens.view import Ui_Form
+from screens.GeneralCustomUi import GeneralCustomUi
+from screens.View import Form
 
-class Home(QWidget, Ui_Form):
+class Home(QWidget, Form):
+
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.ui = GeneralCustomUi(self)
+        
+        

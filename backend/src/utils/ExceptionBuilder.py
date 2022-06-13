@@ -1,4 +1,5 @@
 from dtos.exceptionBody import ExceptionBody
+from exceptions.NotFoundException import NotFoundException
 
 class ExceptionBuilder:
     

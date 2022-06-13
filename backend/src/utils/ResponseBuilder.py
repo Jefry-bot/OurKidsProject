@@ -1,6 +1,7 @@
 
 from flask import jsonify, make_response
 from dtos.response import Response
+from utils.ExceptionBuilder import ExceptionBuilder
 from utils.ExceptionView import ExceptionView
 
 
@@ -56,4 +57,17 @@ class ResponseBuilder:
         )
         
         return make_response(jsonify(response.__dict__), 404)
+
+    @staticmethod
+    def responseConfig(exception = None, data: object = None, statusBody: dict = None) -> Response:
+        if exception != None:
+            ExceptionView.build(ExceptionBuilder.build(exception))
+
+        response = Response(
+            data = data,
+            message = statusBody['message'],
+            status = statusBody['status']
+        )
+        
+        return make_response(jsonify(response.__dict__), statusBody['status'])
         

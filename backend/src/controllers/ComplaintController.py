@@ -1,7 +1,6 @@
-import json
 import string
-from flask import Blueprint, jsonify, request
-from entities.complaint import Complaint
+from flask import Blueprint, request
+from services.AuthService import AuthService
 
 from services.ComplaintService import ComplaintService
 from utils.ResponseBuilder import ResponseBuilder
@@ -13,6 +12,11 @@ class ComplaintController:
     def __init__(self) -> None:
         global service
         service = ComplaintService()
+
+    @complaint_routes.before_request
+    def verify_token_middleware():
+        token = request.headers['Authorization'].split(" ")[1]
+        AuthService.validate_token(token, output = False)
 
     @complaint_routes.get(__url + "/<id>")
     def findById(id):

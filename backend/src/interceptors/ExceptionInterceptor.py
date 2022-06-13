@@ -9,3 +9,6 @@ class ExceptionInterceptor:
 
     def notFound(self, error: NotFoundException):
         return ResponseBuilder.failedNotFound(ExceptionBuilder.build(error))
+
+    def keyError(self, error: KeyError):
+        return ResponseBuilder.responseConfig(error, statusBody = {"message": "No authority in route", "status": 403})
