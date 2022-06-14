@@ -1,4 +1,5 @@
 import string
+from exceptions.NotAuthException import NotAuthException
 from flask import Blueprint, request
 from services.AuthService import AuthService
 
@@ -15,7 +16,10 @@ class ComplaintController:
 
     @complaint_routes.before_request
     def verify_token_middleware():
-        token = request.headers['Authorization'].split(" ")[1]
+        try:
+            token = request.headers['Authorization'].split(" ")[1]
+        except KeyError:
+            raise NotAuthException("Error")
         AuthService.validate_token(token, output = False)
 
     @complaint_routes.get(__url + "/<id>")
