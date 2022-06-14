@@ -5,6 +5,7 @@ from database.database import DataBase
 from entities.user import User
 from exceptions.NotFoundException import NotFoundException
 from flask import request
+from werkzeug.security import generate_password_hash
 
 
 class UserService(DataBase):
@@ -24,7 +25,7 @@ class UserService(DataBase):
         self.cursor.execute(self.sql)
         self.commit()
 
-    def findAll(self) -> dict:
+    def findAll(self):
         self.sql: string = "SELECT ID, USERNAME, STATUS, PASSWORD FROM USER"
         self.cursor.execute(self.sql)
 
@@ -37,15 +38,14 @@ class UserService(DataBase):
                 users.append(self.getUser(row).__dict__)
         else:
             raise NotFoundException("Not found exception")
-        
         return users   
 
     def save(self, request: request) -> None:
         self.sql: string = ("INSERT INTO USER(USERNAME, STATUS, PASSWORD)" + 
-                            "VALUES ('{USERNAME}', {STATUS}, '{PASSWORD}')".format(
+                            "VALUES ('{USERNAME}', {STATUS}, '{PASSWORD}')".format( 
                                       USERNAME = request.json['username'], 
                                       STATUS = request.json['status'], 
-                                      PASSWORD = request.json['password']))
+                                      PASSWORD = generate_password_hash(request.json['password'])))
         self.cursor.execute(self.sql)
         self.commit()
 

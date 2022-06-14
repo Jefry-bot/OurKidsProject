@@ -1,5 +1,5 @@
 import string
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 from exceptions.NotFoundException import NotFoundException
 
 from services.AuthService import AuthService
@@ -11,7 +11,10 @@ class AuthController:
     def login():
         data = request.get_json()
 
-        
+        if AuthService.validateUser(data):
+            return AuthService.write_token(data)
+        else:
+            raise NotFoundException
 
     @auth_routes.get("/verify/token")
     def verify():
