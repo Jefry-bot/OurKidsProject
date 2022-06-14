@@ -1,35 +1,39 @@
 import string
 from flask import Blueprint, request
+from exceptions.NotAuthException import NotAuthException
 from services.AuthService import AuthService
 
-from services.ComplaintService import ComplaintService
+from services.UserService import UserService
 from utils.ResponseBuilder import ResponseBuilder
 
-class ComplaintController:
-    complaint_routes: Blueprint = Blueprint("complaint_routes", __name__)
-    __url: string = "/complaints"
+class UserController:
+    user_routes: Blueprint = Blueprint("user_routes", __name__)
+    __url: string = "/users"
 
     def __init__(self) -> None:
         global service
-        service = ComplaintService()
+        service = UserService()
 
-    @complaint_routes.before_request
+    @user_routes.before_request
     def verify_token_middleware():
-        token = request.headers['Authorization'].split(" ")[1]
+        try:
+            token = request.headers['Authorization'].split(" ")[1]
+        except KeyError:
+            raise NotAuthException("Error")
         AuthService.validate_token(token, output = False)
 
-    @complaint_routes.get(__url + "/<id>")
+    @user_routes.get(__url + "/<id>")
     def findById(id):
         return ResponseBuilder.success(service.findById(id))
 
-    @complaint_routes.get(__url)
+    @user_routes.get(__url)
     def findAll():
         return ResponseBuilder.success(service.findAll()) 
 
-    @complaint_routes.delete(__url + "/<id>")
+    @user_routes.delete(__url + "/<id>")
     def deleteById(id):
         return ResponseBuilder.voidSuccess(service.deleteById, id)
 
-    @complaint_routes.post(__url)
+    @user_routes.post(__url)
     def save():
         return ResponseBuilder.voidSuccess(service.save, request)

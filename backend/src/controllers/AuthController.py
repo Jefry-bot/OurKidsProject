@@ -11,10 +11,7 @@ class AuthController:
     def login():
         data = request.get_json()
 
-        if data['username'] == "Jefry":
-            return AuthService.write_token(data = request.get_json())
-        else: 
-            raise NotFoundException("Not found data")
+        
 
     @auth_routes.get("/verify/token")
     def verify():

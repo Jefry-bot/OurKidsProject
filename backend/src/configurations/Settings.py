@@ -4,7 +4,7 @@ load_env()
 from constant.controllers import CONTROLLERS
 from constant.interceptors import INTERCEPTORS
 from exceptions.NotFoundException import NotFoundException
-from flask import Flask
+from exceptions.NotAuthException import NotAuthException
 from interceptors.ExceptionInterceptor import ExceptionInterceptor
 
 def config(app):
