@@ -92,7 +92,7 @@
            <property name="frameShadow">
             <enum>QFrame::Raised</enum>
            </property>
-           <widget class="QFrame" name="top_bar_frame">
+           <widget class="QFrame" name="main_logo">
             <property name="geometry">
              <rect>
               <x>80</x>
@@ -113,7 +113,7 @@ border-right: 0;</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <widget class="QLabel" name="label">
+            <widget class="QLabel" name="label_logo">
              <property name="geometry">
               <rect>
                <x>40</x>
@@ -133,7 +133,7 @@ font-family: &quot;Trebuchet MS&quot;, Verdana, sans-serif;</string>
              </property>
             </widget>
            </widget>
-           <widget class="QFrame" name="frame">
+           <widget class="QFrame" name="content_login">
             <property name="geometry">
              <rect>
               <x>530</x>
@@ -152,7 +152,7 @@ box-shadow: 10px;</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <widget class="QLabel" name="label_2">
+            <widget class="QLabel" name="label_login">
              <property name="geometry">
               <rect>
                <x>70</x>
@@ -173,7 +173,7 @@ text-align: center;</string>
              </property>
             </widget>
            </widget>
-           <widget class="QFrame" name="frame_2">
+           <widget class="QFrame" name="content_form">
             <property name="geometry">
              <rect>
               <x>510</x>
@@ -188,7 +188,7 @@ text-align: center;</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <widget class="QFrame" name="frame_3">
+            <widget class="QFrame" name="content_username">
              <property name="geometry">
               <rect>
                <x>20</x>
@@ -203,7 +203,7 @@ text-align: center;</string>
              <property name="frameShadow">
               <enum>QFrame::Raised</enum>
              </property>
-             <widget class="QFrame" name="top_bar_frame_2">
+             <widget class="QFrame" name="content_label_username">
               <property name="geometry">
                <rect>
                 <x>10</x>
@@ -224,7 +224,7 @@ border-right: 0;</string>
               <property name="frameShadow">
                <enum>QFrame::Raised</enum>
               </property>
-              <widget class="QLabel" name="label_3">
+              <widget class="QLabel" name="label_username">
                <property name="geometry">
                 <rect>
                  <x>10</x>
@@ -245,7 +245,7 @@ text-align: center;</string>
                </property>
               </widget>
              </widget>
-             <widget class="QLineEdit" name="lineEdit">
+             <widget class="QLineEdit" name="input_username">
               <property name="geometry">
                <rect>
                 <x>10</x>
@@ -260,7 +260,7 @@ text-align: center;</string>
               </property>
              </widget>
             </widget>
-            <widget class="QFrame" name="frame_4">
+            <widget class="QFrame" name="content_password">
              <property name="geometry">
               <rect>
                <x>20</x>
@@ -275,7 +275,7 @@ text-align: center;</string>
              <property name="frameShadow">
               <enum>QFrame::Raised</enum>
              </property>
-             <widget class="QFrame" name="top_bar_frame_3">
+             <widget class="QFrame" name="content_label_password">
               <property name="geometry">
                <rect>
                 <x>10</x>
@@ -296,7 +296,7 @@ border-right: 0;</string>
               <property name="frameShadow">
                <enum>QFrame::Raised</enum>
               </property>
-              <widget class="QLabel" name="label_4">
+              <widget class="QLabel" name="label_password">
                <property name="geometry">
                 <rect>
                  <x>10</x>
@@ -317,7 +317,7 @@ text-align: center;</string>
                </property>
               </widget>
              </widget>
-             <widget class="QLineEdit" name="lineEdit_2">
+             <widget class="QLineEdit" name="input_password">
               <property name="geometry">
                <rect>
                 <x>10</x>
@@ -330,9 +330,18 @@ text-align: center;</string>
                <string notr="true">background-color: none
 </string>
               </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
+              </property>
+              <property name="readOnly">
+               <bool>false</bool>
+              </property>
+              <property name="placeholderText">
+               <string/>
+              </property>
              </widget>
             </widget>
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="submit">
              <property name="geometry">
               <rect>
                <x>100</x>
@@ -342,14 +351,30 @@ text-align: center;</string>
               </rect>
              </property>
              <property name="styleSheet">
-              <string notr="true">color: white</string>
+              <string notr="true">color: black; border: 1px solid; background: white;</string>
              </property>
              <property name="text">
               <string>Submit</string>
              </property>
             </widget>
+            <widget class="QLabel" name="label_verify">
+             <property name="geometry">
+              <rect>
+               <x>200</x>
+               <y>250</y>
+               <width>67</width>
+               <height>17</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: green;</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
            </widget>
-           <widget class="QFrame" name="frame_5">
+           <widget class="QFrame" name="content_about">
             <property name="geometry">
              <rect>
               <x>40</x>
@@ -368,7 +393,7 @@ border: 2px solid white</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <widget class="QLabel" name="label_5">
+            <widget class="QLabel" name="label_about">
              <property name="geometry">
               <rect>
                <x>110</x>
@@ -390,7 +415,7 @@ text-align: center;</string>
              </property>
             </widget>
            </widget>
-           <widget class="QFrame" name="frame_6">
+           <widget class="QFrame" name="content_contact">
             <property name="geometry">
              <rect>
               <x>40</x>
@@ -409,7 +434,7 @@ border: 2px solid white;</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <widget class="QLabel" name="label_6">
+            <widget class="QLabel" name="label_contact">
              <property name="geometry">
               <rect>
                <x>100</x>

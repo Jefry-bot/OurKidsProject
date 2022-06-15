@@ -1,12 +1,14 @@
 from PySide6.QtWidgets import QWidget
+import requests
 from screens.GeneralCustomUi import GeneralCustomUi
-from screens.View import Form
+from screens.Login import Ui_Form
+from services.ComplaintService import ComplaintService
 
-class Home(QWidget, Form):
+class Home(QWidget, Ui_Form):
 
-    def __init__(self):
+    def __init__(self, session):
         super().__init__()
         self.setupUi(self)
-        self.ui = GeneralCustomUi(self)
-        
+        self.ui = GeneralCustomUi(self, session)
+        self.session = self.ui.session
         

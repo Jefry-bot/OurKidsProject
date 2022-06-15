@@ -6,7 +6,6 @@ class Converter:
     @staticmethod
     def complaint(complaint_json):
         complaint = Complaint()
-        
         complaint.name = complaint_json['name']
         complaint.description = complaint_json['description']
         complaint.status = complaint_json['status']

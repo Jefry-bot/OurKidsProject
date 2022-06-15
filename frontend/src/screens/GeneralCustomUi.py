@@ -1,11 +1,24 @@
 from PySide6.QtCore import Qt
+from requests import request, session
+import requests
+from entities.User import User
+from services.AuthService import AuthService
 
 class GeneralCustomUi:
-    def __init__(self, ui) -> None:
+    def __init__(self, ui, session) -> None:
         self.ui = ui
+        self.session = session
+        self.actions()
 
-        self.remove_default_tittle_bar()
+    def actions(self):
+        self.ui.submit.clicked.connect(self.login)
 
-    def remove_default_tittle_bar(self):
-        self.ui.setAttribute(Qt.WA_TranslucentBackground, True)
-        self.ui.setWindowFlag(Qt.FramelessWindowHint) 
+    def login(self):
+        user = User(username = self.ui.input_username.text(), 
+                    password = self.ui.input_password.text())
+        token = AuthService.login(user.__dict__)
+
+        self.session.headers = {'Authorization': "Bearer " + str(token)} 
+
+        if AuthService.verifyLogin(self.session):
+            self.ui.label_verify.setText("Login success")
