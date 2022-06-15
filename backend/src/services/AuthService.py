@@ -34,4 +34,4 @@ class AuthService:
         for user in users:
             if data['username'] == user['username'] and check_password_hash(user['password'], data['password']):
                 return True
-        return False
+        return False 

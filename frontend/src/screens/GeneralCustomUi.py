@@ -1,13 +1,10 @@
 from PySide6.QtCore import Qt
-from requests import request, session
-import requests
 from entities.User import User
 from services.AuthService import AuthService
 
 class GeneralCustomUi:
-    def __init__(self, ui, session) -> None:
+    def __init__(self, ui) -> None:
         self.ui = ui
-        self.session = session
         self.actions()
 
     def actions(self):
@@ -18,7 +15,9 @@ class GeneralCustomUi:
                     password = self.ui.input_password.text())
         token = AuthService.login(user.__dict__)
 
-        self.session.headers = {'Authorization': "Bearer " + str(token)} 
+        self.ui.session.headers = {'Authorization': "Bearer " + str(token)} 
 
-        if AuthService.verifyLogin(self.session):
+        if AuthService.verifyLogin(self.ui.session):
             self.ui.label_verify.setText("Login success")
+
+    

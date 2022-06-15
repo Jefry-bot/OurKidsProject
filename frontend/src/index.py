@@ -10,7 +10,6 @@ if __name__ == '__main__':
     session = requests.Session()
     
     window = Home(session)
-    session = window.session
     window.show()
 
     sys.exit(app.exec())

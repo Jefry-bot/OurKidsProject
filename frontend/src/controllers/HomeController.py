@@ -9,6 +9,6 @@ class Home(QWidget, Ui_Form):
     def __init__(self, session):
         super().__init__()
         self.setupUi(self)
-        self.ui = GeneralCustomUi(self, session)
-        self.session = self.ui.session
-        
+        self.session = session
+        self.ui = GeneralCustomUi(self)
+   
