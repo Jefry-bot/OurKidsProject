@@ -58,7 +58,7 @@ class ComplaintService(DataBase):
             complaint.name = row[1]
             complaint.description = row[3]
         else:
-            raise NotFoundException("No found exception")
+            raise NotFoundException("Not found exception")
 
         return complaint
 
